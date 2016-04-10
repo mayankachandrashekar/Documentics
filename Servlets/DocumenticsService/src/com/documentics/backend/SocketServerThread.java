@@ -31,7 +31,7 @@ public class SocketServerThread  {
 
 	public void setData(String data)
 	{
-		message = "TF-IDF :";
+		message = "ANALYZE :";
 		message += data;
 
 	}
