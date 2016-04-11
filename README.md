@@ -3,7 +3,7 @@ Document Semantic Analyzer App
 
 ![Work flow](workflow.png)
 
-Introduction: 
+<b>Introduction: </b>
 
 Our Project provides source code for the functionality to analyze the semantics of provided web page. Extensions are great way to enhance browsing experience, so we have designed a Google Chrome extension which will take the current webpage URL and perform semantic based analysis on the webpage. We have used different information retrieval techniques which we mentioned below to do analysis.
 
@@ -20,12 +20,12 @@ Our Project provides source code for the functionality to analyze the semantics 
 
 <b>Technologies Used: </b>
 
-  Web Technologies              	: HTML5, CSS, JavaScript
-  Programming languages         	: Java, Scala	
-  IDE’s used                    	: Eclipse, Intellij, WebStorm
-  Services Used		              	: AlchemyAPI, 
-  API’s used		                : TextRunner, Entity Extractor , TF-IDF, Stanford Core NLP, Analysis, d3js, WordNet, LDA
-  Analytic tools 		        : Apache Spark	
+ <i> Web Technologies </i>             	: HTML5, CSS, JavaScript
+<i>Programming languages</i            	: Java, Scala	
+<i>IDE’s used</i>                	      : Eclipse, Intellij, WebStorm
+<i>Services Used</i>                  	: AlchemyAPI, 
+<i>API’s used</i>                       : TextRunner, Entity Extractor , TF-IDF, Stanford Core NLP, Analysis, d3js, WordNet, LDA
+<i>Analytic tools</i>                   : Apache Spark	
 
  
 <b>Our project contains two major sub-projects:</b>
