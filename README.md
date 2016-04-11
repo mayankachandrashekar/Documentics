@@ -1,7 +1,7 @@
 # Documentics
 Document Semantic Analyzer App
 
-![Work flow](mayankachandrashekar.github.com/Documentics/workflow.jpg)
+![Work flow](workflow.jpg)
 
 Introduction: 
 
