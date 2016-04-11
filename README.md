@@ -1,7 +1,7 @@
 # Documentics
 Document Semantic Analyzer App
 
-![Work flow](workflow.jpg)
+![Work flow](workflow.png)
 
 Introduction: 
 
