@@ -20,11 +20,16 @@ Our Project provides source code for the functionality to analyze the semantics 
 
 <b>Technologies Used: </b>
 
-<i> Web Technologies </i>             	: HTML5, CSS, JavaScript \n
-<i>Programming languages</i            	: Java, Scala	\n
-<i>IDE’s used</i>                	      : Eclipse, Intellij, WebStorm \n
-<i>Services Used</i>                  	: AlchemyAPI, \n
-<i>API’s used</i>                       : TextRunner, Entity Extractor , TF-IDF, Stanford Core NLP, d3js, WordNet, LDA \n
+<i> Web Technologies </i>             	: HTML5, CSS, JavaScript 
+
+<i>Programming languages</i            	: Java, Scala	
+
+<i>IDE’s used</i>                	      : Eclipse, Intellij, WebStorm 
+
+<i>Services Used</i>                  	: AlchemyAPI
+
+<i>API’s used</i>                       : TextRunner, Entity Extractor , TF-IDF, Stanford Core NLP, d3js, WordNet, LDA 
+
 <i>Analytic tools</i>                   : Apache Spark	
 
  
