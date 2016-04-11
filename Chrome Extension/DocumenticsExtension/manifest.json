@@ -13,5 +13,7 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
-  ]
+  ],
+  "background": {
+    "css":["bootstrap.css"]}
 }
