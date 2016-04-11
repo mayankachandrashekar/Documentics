@@ -1,5 +1,5 @@
 # Documentics
-<h1>Document Semantic Analyzer App</h1>
+<h2>Document Semantic Analyzer App</h2>
 
 ![Work flow](workflow.png)
 
@@ -22,7 +22,7 @@ Our Project provides source code for the functionality to analyze the semantics 
 
 <i> Web Technologies </i>             	: HTML5, CSS, JavaScript 
 
-<i>Programming languages</i            	: Java, Scala	
+<i>Programming languages</i>           	: Java, Scala	
 
 <i>IDE’s used</i>                	      : Eclipse, Intellij, WebStorm 
 
