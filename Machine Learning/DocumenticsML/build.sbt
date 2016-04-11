@@ -20,7 +20,13 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   "edu.stanford.nlp" % "stanford-corenlp" % "3.3.0" classifier "models",
   "edu.stanford.nlp" % "stanford-corenlp" % "3.3.0",
-  "com.github.scopt" % "scopt_2.10" % "3.4.0"
+  "com.github.scopt" % "scopt_2.10" % "3.4.0",
+  "org.apache.opennlp" % "opennlp-tools" % "1.6.0",
+  "org.apache.opennlp" % "opennlp-uima" % "1.6.0",
+    "org.apache.opennlp" % "opennlp-maxent" % "3.0.3",
+  "org.apache.lucene" % "lucene-core" % "6.0.0",
+  "org.apache.lucene" % "lucene-queryparser" % "6.0.0",
+  "org.apache.lucene" % "lucene-analyzers-common" % "6.0.0"
 )
 
 resolvers ++= Seq(

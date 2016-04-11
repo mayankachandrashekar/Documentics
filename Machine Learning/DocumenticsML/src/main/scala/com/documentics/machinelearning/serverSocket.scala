@@ -1,13 +1,17 @@
 package com.documentics.machinelearning
 
-import java.io.PrintStream
+import java.io.{FileInputStream, InputStream, PrintStream}
 import java.net._
 
+import com.documentics.machinelearning.namedentity.MainNamedEntity
+import opennlp.tools.namefind.TokenNameFinderModel
+import opennlp.tools.tokenize.{Tokenizer, TokenizerME, TokenizerModel}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.json4s.JsonDSL._
 import org.json4s.jackson.Json
-import org.json4s.{DefaultFormats, JValue}
 import org.json4s.jackson.JsonMethods._
+import org.json4s.{DefaultFormats, JValue}
+
 import scala.io._
 
 /**
@@ -21,6 +25,32 @@ object serverSocket {
     val sc = new SparkContext(sparkConf)
     val server = new ServerSocket(9999)
     var flag = false
+    val modelIn: InputStream = new FileInputStream("models\\en-token.bin")
+    val modelTokenizer: TokenizerModel = new TokenizerModel(modelIn)
+    modelIn.close
+    val tokenizer: Tokenizer = new TokenizerME(modelTokenizer)
+    var is: InputStream = new FileInputStream("models/en-university.bin")
+    val modelUniversity: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-person.bin")
+    val modelName: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-organization.bin")
+    val modelOrganisation: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-time.bin")
+    val modelTime: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-date.bin")
+    val modelDate: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-location.bin")
+    val modelLocation: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+    is = new FileInputStream("models/en-ner-money.bin")
+    val modelMoney: TokenNameFinderModel = new TokenNameFinderModel(is)
+    is.close
+
 
     var output = ""
     while (true) {
@@ -39,15 +69,33 @@ object serverSocket {
         if (input.contains("ANALYZE")) {
           val splitInput = input.split("ANALYZE :")
           val output1 = tfIdf.fmain(splitInput(1), sc)
-          val output2 = sentiment.fmain(splitInput(1))
-          val ja=parse(output1)
+          val output2 = /*sentiment.fmain(splitInput(1))*/ "none"
+          val line = splitInput(1)
+          val nameOutput: String = MainNamedEntity.findEntity(line, tokenizer, modelName)
+          // val nameUniversity: String = MainNamedEntity.findEntity(line, tokenizer, modelUniversity)
+          val Organisation: String = MainNamedEntity.findEntity(line, tokenizer, modelOrganisation)
+          val time: String = MainNamedEntity.findEntity(line, tokenizer, modelTime)
+          val date: String = MainNamedEntity.findEntity(line, tokenizer, modelDate)
+          val location: String = MainNamedEntity.findEntity(line, tokenizer, modelLocation)
+          val money: String = MainNamedEntity.findEntity(line, tokenizer, modelMoney)
+          val topSentences=tfIdf.TopSentences(line,sc)
+          val tfJa = parse(output1)
+
           val jv: JValue =
             ("analysis" ->
-              ("tf-idf" -> ja)~
-                ("sentiment" -> output2) )
+              ("tfidf" -> tfJa) ~
+                ("sentiment" -> output2) ~
+                //("university entities" -> parse(nameUniversity)) ~
+                ("nameEntities" -> parse(nameOutput)) ~
+                ("organisationEntities" -> parse(Organisation)) ~
+                ("timeEntities" -> parse(time)) ~
+                ("dateEntities" -> parse(date)) ~
+                ("locationEntities" -> parse(location)) ~
+                ("moneyEntities" -> parse(money))~
+                  ("topSentences" -> topSentences))
           val jss = Json(DefaultFormats).write(jv)
 
-         
+
 
           output = jss
           flag = true

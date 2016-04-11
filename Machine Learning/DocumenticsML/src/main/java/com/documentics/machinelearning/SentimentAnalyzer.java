@@ -62,9 +62,6 @@ public class SentimentAnalyzer {
 
                 }
             }
-            if (mainSentiment == 2 || mainSentiment > 4 || mainSentiment < 0) {
-                return -1;
-            }
 
             return mainSentiment;
 
